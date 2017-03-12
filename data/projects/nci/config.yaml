@@ -1,0 +1,45 @@
+
+scm:
+    type: git
+    repository: https://github.com/node-ci/nci
+    rev: master
+
+#Specify environments in which project should be run.
+#That enironments will be satisfied be nodes (see nodes in data/config.yaml).
+#Different options can be passed to different environments.
+envs:
+    - name: node:6
+      options:
+          publishAll: true
+
+    - name: node:4
+      options:
+          user: nobody
+          publish:
+              - 8080:8888
+              - 9090:9999
+
+    - name: node:0.12
+
+    - name: node:0.10
+      options:
+          user: mail
+
+#uncomment to enable notifications
+#notify when build fails or build status changes (according to previous status)
+# notify:
+#     on:
+#         - error
+#         - change
+#     to:
+#         mail:
+#             - your_mail@example.com
+
+steps:
+    - name: sync deps
+      cmd: npm install && npm prune
+
+    - name: test
+      cmd: npm test
+
+
