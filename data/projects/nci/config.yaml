@@ -37,7 +37,9 @@ envs:
 
 steps:
     - name: sync deps
-      cmd: npm install && npm prune
+      cmd: >
+           npm --loglevel warn install &&
+           npm --loglevel warn prune
 
     - name: test
       cmd: npm test
