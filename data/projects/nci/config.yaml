@@ -8,22 +8,14 @@ scm:
 #That enironments will be satisfied be nodes (see nodes in data/config.yaml).
 #Different options can be passed to different environments.
 envs:
-    - name: node:6
+    - name: node:12
       options:
-          publishAll: true
-
-    - name: node:4
-      options:
-          user: nobody
           publish:
-              - 8080:8888
               - 9090:9999
 
-    - name: node:0.12
-
-    - name: node:0.10
+    - name: node:10
       options:
-          user: mail
+          publishAll: true
 
 #uncomment to enable notifications
 #notify when build fails or build status changes (according to previous status)
